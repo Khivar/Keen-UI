@@ -16,14 +16,14 @@
                 :id="option[keys.id]"
                 :key="option[keys.id]"
                 :name="name"
-                :true-value="option[keys.value] || option"
+                :true-value="(typeof(option) === 'string') ? option : option[keys.value]"
 
                 @blur="onBlur"
                 @focus="onFocus"
 
                 v-for="option in options"
                 v-model="selectedOptionValue"
-            >{{ option[keys.label] || option }}</ui-radio>
+            >{{ (typeof(option) === 'string') ? option : option[keys.label] }}</ui-radio>
         </div>
 
         <div class="ui-radio-group__feedback" v-if="hasFeedback">
